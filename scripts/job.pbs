@@ -1,0 +1,54 @@
+#!/bin/bash -l
+#PBS -A crocus
+#PBS -q debug
+#PBS -l select=1
+#PBS -l walltime=00:20:00
+#PBS -N erf_abl_test
+#PBS -l filesystems=home:flare
+#PBS -j oe
+
+set -euo pipefail
+
+CASE_DIR=/flare/gpu_hack/dfytanidis/runs/abl_test
+ERF_DIR=/flare/gpu_hack/dfytanidis/ERF
+EXE=$ERF_DIR/install_aurora/bin/erf_exec
+INPUTS=inputs_most
+
+cd "$CASE_DIR"
+
+module load mpich/opt/4.2.3-intel
+module load hdf5/1.14.6
+module load netcdf-cxx4
+module load netcdf-c
+module load netcdf-fortran
+module load cmake
+
+export MPICH_CC=icx
+export MPICH_CXX=icpx
+export MPICH_FC=ifx
+export MPICH_F90=ifx
+
+export NETCDF_FORTRAN_ROOT=$(module show netcdf-fortran 2>&1 | sed -n 's/.*setenv("NETCDF_FORTRAN_ROOT","\([^"]*\)").*/\1/p')
+export CPPFLAGS="-I${NETCDF_C_ROOT}/include -I${NETCDF_FORTRAN_ROOT}/include -I${HDF5_ROOT}/include"
+export LDFLAGS="-L${NETCDF_C_ROOT}/lib64 -L${NETCDF_FORTRAN_ROOT}/lib64 -L${HDF5_ROOT}/lib"
+export LD_LIBRARY_PATH="${NETCDF_C_ROOT}/lib64:${NETCDF_FORTRAN_ROOT}/lib64:${HDF5_ROOT}/lib:${LD_LIBRARY_PATH:-}"
+
+export OMP_NUM_THREADS=1
+
+if [[ ! -x "$EXE" ]]; then
+  echo "ERROR: executable not found: $EXE"
+  exit 1
+fi
+
+if [[ ! -f "$INPUTS" ]]; then
+  echo "ERROR: input file not found: $CASE_DIR/$INPUTS"
+  exit 1
+fi
+
+which mpiexec
+echo "Running in: $(pwd)"
+echo "Executable: $EXE"
+echo "Input: $INPUTS"
+
+mpiexec -n 12 --ppn 12 --depth=1 --cpu-bind=depth \
+  "$EXE" "$INPUTS" > run.out 2>&1
