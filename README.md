@@ -114,11 +114,12 @@ home filesystem is small and slow for builds.
 ```bash
 # Pick a project path that you have write access to
 export BASE=/flare/gpu_hack/<your_username>
-or BASE=~/
-
 #optional
 mkdir -p "$BASE"
 cd "$BASE"
+
+or just use:
+cd ~/
 
 git clone git@github.com:erf-model/ERF.git
 cd ERF
