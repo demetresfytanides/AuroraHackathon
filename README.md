@@ -43,9 +43,6 @@ You only need to do this **once per machine** (i.e. once on Aurora).
 
 ```bash
 # On Aurora (login node)
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
-
 # Generate an ed25519 key — recommended by GitHub
 ssh-keygen -t ed25519 -C "your_email@example.com" -f ~/.ssh/id_ed25519_github
 ```
