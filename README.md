@@ -118,7 +118,7 @@ export BASE=/flare/gpu_hack/<your_username>
 mkdir -p "$BASE"
 cd "$BASE"
 
-or just use:
+#or just use (recommended):
 cd ~/
 
 git clone git@github.com:erf-model/ERF.git
