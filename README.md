@@ -137,10 +137,10 @@ then copy the three helper scripts into `$BASE/ERF`:
 ```bash
 cd ~
 git clone git@github.com:demetresfytanides/AuroraHackathon.git
-cp AuroraHackathon/scripts/build_erf_aurora.sh  $BASE/ERF/
-cp AuroraHackathon/scripts/case_helper.sh       $BASE/ERF/
-cp AuroraHackathon/scripts/job.pbs              $BASE/ERF/
-chmod +x $BASE/ERF/build_erf_aurora.sh $BASE/ERF/case_helper.sh
+cp AuroraHackathon/scripts/build_erf_aurora.sh  ~/ERF/
+cp AuroraHackathon/scripts/case_helper.sh       ~/ERF/
+cp AuroraHackathon/scripts/job.pbs              ~/ERF/
+chmod +x $BASE/ERF/build_erf_aurora.sh ~/ERF/case_helper.sh
 ```
 
 ---
