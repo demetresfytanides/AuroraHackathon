@@ -191,7 +191,7 @@ $BASE/ERF/build_aurora/Exec/<case>/erf_<case>
 
 ---
 
-## 5. Run an example case interactively
+## 5. Run an example case interactively (pending, please ignore for now. You can still use to copy-paste a new folder)
 
 The `case_helper.sh` script copies a canonical ERF test case into a run
 directory, loads the runtime environment, and launches a short single-rank
