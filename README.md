@@ -112,14 +112,16 @@ Choose a working directory on the **flare** (project) filesystem — the
 home filesystem is small and slow for builds.
 
 ```bash
-# Pick a project path that you have write access to
+# use home direction (recommended):
+cd ~/
+
+#alternatively pick a project path that you have write access to
 export BASE=/flare/gpu_hack/<your_username>
 #optional
 mkdir -p "$BASE"
 cd "$BASE"
 
-#or just use (recommended):
-cd ~/
+
 
 git clone git@github.com:erf-model/ERF.git
 cd ERF
