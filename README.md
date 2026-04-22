@@ -326,6 +326,8 @@ during / after the hackathon.
 
 ## 10. Credits
 
-Maintained for the ALCF Aurora Hackathon.
+ALCF team (Michael Buehlmann, Abhishek Bagusetty, Ramesh Balakrishnan) who helped us debug ERF before the Aurora Hackathon.
+Akash Dhryv for his guidance and coordination with ALCF and ERF/AMRx teams.
+
 Build / run scripts adapted from the ERF project:
 https://github.com/erf-model/ERF
