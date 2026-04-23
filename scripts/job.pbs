@@ -11,7 +11,7 @@ set -euo pipefail
 
 CASE_DIR=/flare/gpu_hack/dfytanidis/runs/abl_test
 ERF_DIR=/flare/gpu_hack/dfytanidis/ERF
-EXE=$ERF_DIR/install_aurora/bin/erf_exec
+EXE=$ERF_DIR/build_aurora/Exec/erf_exec
 INPUTS=inputs_most
 
 cd "$CASE_DIR"
